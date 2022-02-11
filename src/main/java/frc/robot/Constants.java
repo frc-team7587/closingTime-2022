@@ -43,8 +43,8 @@ public class Constants {
     // Arm constants
     public static final int ARM_SPARK_PWM_ID = 4;
     public static final double ARM_MAX_SPEED = 0.40;
-    public static final float ARM_SOFT_LIMIT_FWD = 30;
-    public static final float ARM_SOFT_LIMIT_BKW = 30; 
+    public static final float ARM_SOFT_LIMIT_FWD = 300;
+    public static final float ARM_SOFT_LIMIT_BKW = 300; 
 
     // Auto constants
     public static final double AUTO_PORT_DEPLOY_TIME = 2;
