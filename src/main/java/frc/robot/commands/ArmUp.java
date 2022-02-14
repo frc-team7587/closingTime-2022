@@ -13,35 +13,31 @@ import edu.wpi.first.wpilibj2.command.*;
 import frc.robot.subsystems.*;
 
 public class ArmUp extends WaitUntilCommand {
-  /**
-   * Creates a new ArmUp.
-   */
-
+  
   private Arm m_arm;
 
   public ArmUp(Arm subsystem, BooleanSupplier btnState) {
     super(btnState);
     addRequirements(subsystem);
     m_arm = subsystem;
-    // Use addRequirements() here to declare subsystem dependencies.
   }
 
-  // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_arm.initSoftLimit();
-    // m_arm.reset();
+    m_arm.reset();
+    m_arm.setSoftLimits();
   }
 
-  // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
     m_arm.raise();
+    m_arm.setSoftLimits();
   }
 
-  // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
     m_arm.stop();
+    m_arm.reset();
   }
+
 }

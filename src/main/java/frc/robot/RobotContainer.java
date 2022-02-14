@@ -20,8 +20,8 @@ public class RobotContainer {
 
     // Controllers (input devices)
     // Set the port accordingly if you have multiple USB input devices
-    final Joystick gamePad = new Joystick(0);
-    // final Joystick logi = new Joystick(0);
+    final Joystick logi = new Joystick(0);
+    final Joystick gamePad = new Joystick(1);
 
 
     // command for autonomous mode
@@ -30,12 +30,12 @@ public class RobotContainer {
     public RobotContainer() {
         
         // set the default command for the drive train
-        //  m_drive.setDefaultCommand(
-        //         new RunCommand(
-        //                 () -> m_drive.drive(
-        //                         DRIVE_SPEED_MULTIPLIER * 0.75 * logi.getTwist() * Math.abs(logi.getThrottle()*-1),
-        //                         DRIVE_SPEED_MULTIPLIER * -logi.getY() * logi.getThrottle()),
-        //                 m_drive));  
+         m_drive.setDefaultCommand(
+                new RunCommand(
+                        () -> m_drive.drive(
+                                DRIVE_SPEED_MULTIPLIER * 0.75 * logi.getTwist() * Math.abs(logi.getThrottle()*-1),
+                                DRIVE_SPEED_MULTIPLIER * -logi.getY() * logi.getThrottle()),
+                        m_drive));  
        
                         // m_drive.setDefaultCommand(
                         //   new RunCommand(

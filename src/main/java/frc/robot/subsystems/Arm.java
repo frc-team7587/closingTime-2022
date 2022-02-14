@@ -10,34 +10,30 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Arm extends SubsystemBase {
 
-    private final CANSparkMax sparky = new CANSparkMax(1, MotorType.kBrushless);
-public Arm(){
-    initSoftLimit();
-}
-    public void initSoftLimit(){
-
-        sparky.enableSoftLimit(SoftLimitDirection.kForward, true);
-        sparky.enableSoftLimit(SoftLimitDirection.kReverse, true);
-
-        sparky.setSoftLimit(SoftLimitDirection.kForward, ARM_SOFT_LIMIT_FWD);
-        sparky.setSoftLimit(SoftLimitDirection.kReverse, ARM_SOFT_LIMIT_BKW);
-
-    }
+    private final CANSparkMax m_spark = new CANSparkMax(1, MotorType.kBrushless);
 
     public void raise() {
-        sparky.set(0.25 * -ARM_MAX_SPEED);
+        m_spark.set(0.25 * -ARM_MAX_SPEED);
     }
 
     public void lower() {
-        sparky.set(0.25 * ARM_MAX_SPEED);
+        m_spark.set(0.25 * ARM_MAX_SPEED);
     }
 
     public void stop() {
-        sparky.set(0);
+        m_spark.set(0);
+    }
+
+    public void setSoftLimits(){
+        m_spark.enableSoftLimit(SoftLimitDirection.kForward, true);
+        m_spark.enableSoftLimit(SoftLimitDirection.kReverse, true);
+
+        m_spark.setSoftLimit(SoftLimitDirection.kForward, ARM_SOFT_LIMIT_FWD);
+        m_spark.setSoftLimit(SoftLimitDirection.kReverse, ARM_SOFT_LIMIT_BKW);
     }
 
     public void reset() {
-        sparky.restoreFactoryDefaults();
+        m_spark.restoreFactoryDefaults();
     }
 
     @Override
