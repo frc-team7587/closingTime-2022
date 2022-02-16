@@ -9,7 +9,14 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Arm extends SubsystemBase {
+    
     private final CANSparkMax m_spark = new CANSparkMax(1, MotorType.kBrushless);
+
+    public Arm(){
+        this.reset();
+        this.setSoftLimits();
+    }
+
     public void raise() {
         m_spark.set(-ARM_MAX_SPEED);
     }

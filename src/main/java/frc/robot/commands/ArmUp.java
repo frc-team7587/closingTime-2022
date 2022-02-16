@@ -24,20 +24,16 @@ public class ArmUp extends WaitUntilCommand {
 
   @Override
   public void initialize() {
-    m_arm.reset();
-    m_arm.setSoftLimits();
   }
 
   @Override
   public void execute() {
     m_arm.raise();
-    m_arm.setSoftLimits();
   }
 
   @Override
   public void end(boolean interrupted) {
     m_arm.stop();
-    m_arm.reset();
   }
 
 }
