@@ -13,8 +13,8 @@ public class Arm extends SubsystemBase {
     private final CANSparkMax m_spark = new CANSparkMax(1, MotorType.kBrushless);
 
     public Arm(){
-        this.reset();
-        this.setSoftLimits();
+        // this.reset();
+        // this.setSoftLimits();
     }
 
     public void raise() {
@@ -37,7 +37,7 @@ public class Arm extends SubsystemBase {
     }
 
     public void reset() {
-        m_spark.restoreFactoryDefaults();
+        // m_spark.restoreFactoryDefaults();
     }
 
     @Override

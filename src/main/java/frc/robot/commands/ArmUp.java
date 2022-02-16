@@ -24,16 +24,20 @@ public class ArmUp extends WaitUntilCommand {
 
   @Override
   public void initialize() {
+    // m_arm.reset();
+    
   }
 
   @Override
   public void execute() {
+    System.out.println("arm UP....");
     m_arm.raise();
   }
 
   @Override
   public void end(boolean interrupted) {
     m_arm.stop();
+    // m_arm.reset();
   }
 
 }

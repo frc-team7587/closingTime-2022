@@ -23,9 +23,14 @@ public class DriveTrain extends SubsystemBase {
   /**
    * Creates a new DriveTrain.
    */
-  PWMTalonSRX talon = new PWMTalonSRX(0);
+  PWMTalonSRX talon1 = new PWMTalonSRX(0);
   PWMTalonSRX talon2 = new PWMTalonSRX(1);
-  DifferentialDrive m_drive = new DifferentialDrive(talon, talon2);
+  DifferentialDrive m_drive = new DifferentialDrive(talon1, talon2);
+
+
+   public DriveTrain(){
+     talon1.setInverted(true);
+   }
 
   public void drive(double speed, double rotation) {
 
