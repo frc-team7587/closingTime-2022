@@ -7,30 +7,20 @@
 
 package frc.robot.subsystems;
 
-import static frc.robot.Constants.*;
-
-import edu.wpi.first.wpilibj.motorcontrol.MotorController;
-import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj.motorcontrol.PWMTalonSRX;
-import edu.wpi.first.wpilibj.motorcontrol.PWMVictorSPX;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import com.ctre.phoenix.motorcontrol.GroupMotorControllers;
-//import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 public class DriveTrain extends SubsystemBase {
-  /**
-   * Creates a new DriveTrain.
-   */
+
   PWMTalonSRX talon1 = new PWMTalonSRX(0);
   PWMTalonSRX talon2 = new PWMTalonSRX(1);
   DifferentialDrive m_drive = new DifferentialDrive(talon1, talon2);
 
-
-   public DriveTrain(){
-     talon1.setInverted(true);
-   }
+  public DriveTrain(){
+    this.talon1.setInverted(true);
+  }
 
   public void drive(double speed, double rotation) {
 
@@ -48,6 +38,6 @@ public class DriveTrain extends SubsystemBase {
 
   @Override
   public void periodic() {
-    // This method will be called once per scheduler run
+    
   }
 }

@@ -10,12 +10,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Arm extends SubsystemBase {
     
-    private final CANSparkMax m_spark = new CANSparkMax(1, MotorType.kBrushless);
-
-    public Arm(){
-        // this.reset();
-        // this.setSoftLimits();
-    }
+    private final CANSparkMax m_spark = new CANSparkMax(ARM_SPARK_ID, MotorType.kBrushless);
 
     public void raise() {
         m_spark.set(-ARM_MAX_SPEED);
@@ -29,19 +24,18 @@ public class Arm extends SubsystemBase {
         m_spark.set(0);
     }
 
-    public void setSoftLimits(){
+    public void reset() {
+        
+        m_spark.restoreFactoryDefaults();
+
         m_spark.enableSoftLimit(SoftLimitDirection.kForward, true);
         m_spark.enableSoftLimit(SoftLimitDirection.kReverse, true);
         m_spark.setSoftLimit(SoftLimitDirection.kForward, ARM_SOFT_LIMIT_FWD);
         m_spark.setSoftLimit(SoftLimitDirection.kReverse, ARM_SOFT_LIMIT_BKW);
     }
 
-    public void reset() {
-        // m_spark.restoreFactoryDefaults();
-    }
-
     @Override
     public void periodic() {
-        // This method will be called once per scheduler run
+
     }
 }
