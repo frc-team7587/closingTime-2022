@@ -14,9 +14,9 @@ public class RobotContainer {
     private final DriveTrain m_drive = new DriveTrain();
     
     /* test PID control on NewArm  */
-    private final NewArm m_arm = new NewArm();
+    // private final NewArm m_arm = new NewArm();
     
-    // private final Arm m_arm = new Arm();
+    private final Arm m_arm = new Arm();
 
     private final Intake m_intake = new Intake();
 
@@ -50,20 +50,19 @@ public class RobotContainer {
             btnIn.whenPressed( new IntakeIn(m_intake, () -> !btnOut.get()) );
 
         // Arm, toggle below commented block between simple and PID controlled Arm
-        /*
         final JoystickButton btnArmDown = new JoystickButton(xbox, Button.kY.value); // Y button
         btnArmDown.whenPressed( new ArmDown(m_arm, () -> !btnArmDown.get()) );
 
         final JoystickButton btnArmUp = new JoystickButton(xbox, Button.kB.value);   // B button
         btnArmUp.whenPressed( new ArmUp(m_arm, () -> !btnArmUp.get()) ); 
-        */
+       
 
         // PID-controlled Arm system
-        new JoystickButton(xbox, Button.kY.value) // Y button
+        /* new JoystickButton(xbox, Button.kY.value) // Y button
            .whenPressed( () -> m_arm.raise());
 
         new JoystickButton(xbox, Button.kB.value) // B button
-           .whenPressed( () -> m_arm.lower());
+           .whenPressed( () -> m_arm.lower()); */
 
     }
 
