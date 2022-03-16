@@ -11,9 +11,8 @@ public class Constants {
     public static final int ARM_SPARK_ID = 5;
 
     // Control ports
-  //public static final int XBOX_CTRL_PORT = 2;
-    public static final int LOGIJOY_PORT_LEFT = 1;
-    public static final int LOGIJOY_PORT_RIGHT = 0;
+    public static final int XBOX_CTRL_PORT = 1;
+    public static final int LOGIJOY_PORT = 0;
     
      // Performance constants
     public static final double DRIVE_SPEED_MULTIPLIER = 0.75;   // to be verified
@@ -22,6 +21,9 @@ public class Constants {
 
     // Arm soft limits (to be tested)
     public static final float ARM_SOFT_LIMIT_FWD = 15;
-    public static final float ARM_SOFT_LIMIT_BKW = -15; 
+    public static final float ARM_SOFT_LIMIT_BKW = -15;
+
+    public static final double ARM_DOWN_SPEED = 1;
+    public static final double ARM_UP_SPEED = -1; 
 
 }
