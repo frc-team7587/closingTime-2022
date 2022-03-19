@@ -7,8 +7,6 @@
 
 package frc.robot.commands;
 
-import java.util.function.BooleanSupplier;
-
 import edu.wpi.first.wpilibj2.command.*;
 import frc.robot.subsystems.*;
 
@@ -35,8 +33,8 @@ public class ArmDown extends CommandBase {
       System.out.println(" armDown, encoder: " + m_arm.getEncoder().getPosition());
       count=0;
     }
-
     m_arm.lower();
+
   }
 
   @Override

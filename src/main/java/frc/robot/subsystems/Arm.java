@@ -21,19 +21,16 @@ public class Arm extends SubsystemBase {
     }
 
     public void raise() {
-        m_spark.set(-ARM_MAX_SPEED);
+        m_spark.set(ARM_MAX_SPEED);
     }
 
     public void lower() {
-        m_spark.set(ARM_MAX_SPEED);
+        m_spark.set(-ARM_MAX_SPEED);
     }
 
     public void stop() {
         m_spark.set(0);
-        m_spark.stopMotor();
     }
-
-    
 
     public RelativeEncoder getEncoder() {
         return encoder;

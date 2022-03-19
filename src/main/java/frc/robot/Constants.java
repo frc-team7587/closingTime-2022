@@ -44,7 +44,7 @@ public class Constants {
     public static final int ARM_SPARK_CAN_ID = 2;
     public static final double ARM_MAX_SPEED = 0.03;
     public static final float ARM_SOFT_LIMIT_FWD = 5;
-    public static final float ARM_SOFT_LIMIT_BKW = 0; 
+    public static final float ARM_SOFT_LIMIT_BKW = -0.03f; 
 
     // Auto constants
     public static final double AUTO_PORT_DEPLOY_TIME = 2;

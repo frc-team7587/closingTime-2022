@@ -7,8 +7,6 @@
 
 package frc.robot.commands;
 
-import java.util.function.BooleanSupplier;
-
 import edu.wpi.first.wpilibj2.command.*;
 import frc.robot.subsystems.*;
 
@@ -24,7 +22,6 @@ public class ArmUp extends CommandBase {
 
   @Override
   public void initialize() {
-    // m_arm.setSoftLimits();
     System.out.println(" ++++++ ARM UP INITIALIZED ....");
 
     
