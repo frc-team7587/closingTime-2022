@@ -1,43 +1,53 @@
 package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkMax.SoftLimitDirection;
 
 import static frc.robot.Constants.*;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.TalonFX;
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Arm extends SubsystemBase {
+    
+    private final CANSparkMax m_spark = new CANSparkMax(ARM_SPARK_CAN_ID, MotorType.kBrushless);
+    private RelativeEncoder encoder;
 
-    //private final CANSparkMax m_spark = new CANSparkMax(ARM_SPARK_ID, MotorType.kBrushless);
-    private final TalonFX falco = new TalonFX(0);
+    public Arm(){
+        m_spark.restoreFactoryDefaults();
+        this.setSoftLimits();
+        this.encoder = m_spark.getEncoder();
+    }
 
     public void raise() {
-        falco.set(ControlMode.Velocity, -ARM_MAX_SPEED);
+        m_spark.set(-ARM_MAX_SPEED);
     }
 
     public void lower() {
-        falco.set(ControlMode.Velocity, ARM_MAX_SPEED);
+        m_spark.set(ARM_MAX_SPEED);
     }
 
     public void stop() {
-        falco.set(ControlMode.Velocity, 0);
+        m_spark.set(0);
+        m_spark.stopMotor();
     }
 
-    public void reset() {
+    
 
-        // m_spark.restoreFactoryDefaults();
+    public RelativeEncoder getEncoder() {
+        return encoder;
+    }
 
-        // m_spark.enableSoftLimit(SoftLimitDirection.kForward, true);
-        // m_spark.enableSoftLimit(SoftLimitDirection.kReverse, true);
-        // m_spark.setSoftLimit(SoftLimitDirection.kForward, ARM_SOFT_LIMIT_FWD);
-        // m_spark.setSoftLimit(SoftLimitDirection.kReverse, ARM_SOFT_LIMIT_BKW);
+    public void setSoftLimits(){
+        m_spark.enableSoftLimit(SoftLimitDirection.kForward, true);
+        m_spark.enableSoftLimit(SoftLimitDirection.kReverse, true);
+        m_spark.setSoftLimit(SoftLimitDirection.kForward, ARM_SOFT_LIMIT_FWD);
+        m_spark.setSoftLimit(SoftLimitDirection.kReverse, ARM_SOFT_LIMIT_BKW);
     }
 
     @Override
     public void periodic() {
-
+        // This method will be called once per scheduler run
     }
 }
