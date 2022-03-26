@@ -43,35 +43,40 @@ public class RobotContainer {
                         );  
 
                         // m_arm.reset();
-                        // m_arm.setSoftLimits();
+                        // m_arm.restoreFactoryDefaults();
+                        m_arm.setSoftLimits(true);
+                
                         configureButtonBindings();
     }
 
-    /**
-     * Use this method to define your button->command mappings. Buttons can be
-     * created by instantiating a {@link GenericHID} or one of its subclasses
-     * ({@link edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then
-     * passing it to a {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
-     */
+    public Arm getArmSubsystem(){
+        return m_arm;
+    }
     private void configureButtonBindings() {
-
         // bind arm controls
+    /*
+      This is to try PID control using sparkmax encoder. Not the best way to use it with button held
+      but below is to just simulate teleopPeriodic()
+    */
+    // new JoystickButton(gamePad, Button.kY.value) // Y button
+    //         .whileHeld(new ArmUp(m_arm));
 
-        // for sparkmax
-    //    final Button btnArmDown = new JoystickButton(gamePad, BTN_Y); // A
-    //    final Button btnArmUp = new JoystickButton(gamePad, BTN_B); // X
-    //    btnArmDown.whenPressed(new ArmDown(m_arm, () -> (!btnArmDown.get())));
-    //     btnArmUp.whenPressed(new ArmUp(m_arm, () -> (!btnArmUp.get())));
+    // new JoystickButton(gamePad, Button.kB.value)   // B button
+    //         .whileHeld(new ArmDown(m_arm));
+
+
+
 
     /*
       This works with softlimits of sparkmax. Motor moves once button is pressed (and released) once,
       soft limit will then stops the motor.
     */
-    // new JoystickButton(gamePad, Button.kY.value) // Y button
-    //         .whenPressed(new ArmUp(m_arm));
+    // new JoystickButton(gamePad, Button.kY.value) 
+    //         .whenPressed(() -> m_arm.raiseTo(5));
 
-    // new JoystickButton(gamePad, Button.kB.value)   // B button
-    //         .whenPressed(new ArmDown(m_arm));
+    // new JoystickButton(gamePad, Button.kB.value) 
+    //         .whenPressed(() -> m_arm.lowerTo(5));
+
 
     /* This is the basic way of running the motor, which runs while button is held down and stops 
     when button is released.
@@ -84,6 +89,8 @@ public class RobotContainer {
 
     new JoystickButton(gamePad, Button.kB.value)   // B button
             .whileHeld(new ArmDown(m_arm));
+
+
 
         // for intake roller  
     //     final Button btnIntakeOut = new JoystickButton(gamePad, BUMP_RIGHT); // Right bumper

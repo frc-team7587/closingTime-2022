@@ -35,11 +35,18 @@ public class ArmUp extends CommandBase {
     }
     
     m_arm.raise();
+    // m_arm.raiseTo(5);
   }
+
+  // public void raiseTo(double rotations){
+  //   m_arm.raiseTo(rotations);
+  // }
+
+
 
   @Override
   public void end(boolean interrupted) {
-    System.out.println("up---Stopped ");  
+    System.out.println("up ---Stopped " + interrupted);  
     m_arm.stop();
   }
 

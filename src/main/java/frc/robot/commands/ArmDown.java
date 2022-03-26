@@ -14,7 +14,7 @@ public class ArmDown extends CommandBase {
 
   private Arm m_arm;
   private int count;
-  
+
   public ArmDown(Arm subsystem) {
     addRequirements(subsystem);
     m_arm = subsystem;
@@ -34,13 +34,18 @@ public class ArmDown extends CommandBase {
       count=0;
     }
     m_arm.lower();
+    // m_arm.lowerTo(5);
 
   }
+
+  // public void lowerTo(double rotations){
+  //   m_arm.lowerTo(rotations);
+  // }
 
   @Override
   public void end(boolean interrupted) {
     m_arm.stop();
-    System.out.println("down---Stopped ");
+    System.out.println("down---Stopped " + interrupted);
     // m_arm.reset();
   }
   
