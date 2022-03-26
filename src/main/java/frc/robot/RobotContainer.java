@@ -67,20 +67,23 @@ public class RobotContainer {
       This works with softlimits of sparkmax. Motor moves once button is pressed (and released) once,
       soft limit will then stops the motor.
     */
-    new JoystickButton(gamePad, Button.kY.value) // Y button
-            .whenPressed(new ArmUp(m_arm));
+    // new JoystickButton(gamePad, Button.kY.value) // Y button
+    //         .whenPressed(new ArmUp(m_arm));
 
-    new JoystickButton(gamePad, Button.kB.value)   // B button
-            .whenPressed(new ArmDown(m_arm));
+    // new JoystickButton(gamePad, Button.kB.value)   // B button
+    //         .whenPressed(new ArmDown(m_arm));
 
     /* This is the basic way of running the motor, which runs while button is held down and stops 
     when button is released.
+    With soft limit enabled, however, this gives flexibility of stoppping / reversing
+    the arm movement at will, but still impose limit in each direction,
+    so a more desirable mode during teleOp.
      */
-    // new JoystickButton(gamePad, Button.kY.value) // Y button
-    //         .whileHeld(new ArmUp(m_arm));
+    new JoystickButton(gamePad, Button.kY.value) // Y button
+            .whileHeld(new ArmUp(m_arm));
 
-    // new JoystickButton(gamePad, Button.kB.value)   // B button
-    //         .whileHeld(new ArmDown(m_arm));
+    new JoystickButton(gamePad, Button.kB.value)   // B button
+            .whileHeld(new ArmDown(m_arm));
 
         // for intake roller  
     //     final Button btnIntakeOut = new JoystickButton(gamePad, BUMP_RIGHT); // Right bumper
